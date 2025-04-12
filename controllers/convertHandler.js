@@ -1,12 +1,12 @@
 function ConvertHandler() {
   this.getNum = function (input) {
     if (/^[^\d\s\w]/.test(input)) {
-      return undefined;
+      return "invalid number";
     }
 
     const slashCount = (input.match(/\//g) || []).length;
     if (slashCount > 1) {
-      return undefined;
+      return "invalid number";
     }
 
     const regex = /(\d*\.?\d+\/\d*\.?\d+|\d*\.?\d+)/;
@@ -16,7 +16,7 @@ function ConvertHandler() {
       if (/^[a-zA-Z]+$/.test(input.trim())) {
         return 1;
       }
-      return undefined;
+      return "invalid number";
     }
 
     let numStr = result[0];
@@ -32,7 +32,7 @@ function ConvertHandler() {
     const regex = /[a-zA-Z]+$/;
     let result = input.match(regex);
     if (!result) {
-      return undefined;
+      return "invalid unit";
     }
 
     result = result[0].toLowerCase();
@@ -51,7 +51,7 @@ function ConvertHandler() {
       case "km":
         return "km";
       default:
-        return undefined;
+        return "invalid unit";
     }
   };
 
@@ -77,7 +77,7 @@ function ConvertHandler() {
         result = "mi";
         break;
       default:
-        result = undefined;
+        return "invalid unit";
     }
 
     return result;
@@ -105,7 +105,7 @@ function ConvertHandler() {
         result = "kilometers";
         break;
       default:
-        result = undefined;
+        return "invalid unit";
     }
 
     return result;

@@ -22,7 +22,7 @@ suite("Unit Tests", function () {
   });
 
   test("Invalid input (double fraction)", function () {
-    assert.isUndefined(convertHandler.getNum("1/2/3kg"));
+    assert.equal(convertHandler.getNum("1/2/3kg"), "invalid number");
   });
 
   test("Default to a numerical input of 1 when no numerical input is provided", function () {
@@ -39,7 +39,7 @@ suite("Unit Tests", function () {
   });
 
   test("Invalid unit inputs", function () {
-    assert.isUndefined(convertHandler.getUnit("5xyz"));
+    assert.equal(convertHandler.getUnit("5xyz"), "invalid unit");
   });
 
   test("Return unit for valid inputs", function () {
